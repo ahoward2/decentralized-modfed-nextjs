@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const Stock = ({ stock }, updateCalculatorState) => {
+const Stock = (props) => {
   const [isChecked, setIsChecked] = useState(false);
 
   return (
@@ -15,7 +15,7 @@ const Stock = ({ stock }, updateCalculatorState) => {
             flex: "1",
           }}
         >
-          {stock.name}
+          {props.stock.name}
         </div>
 
         <div
@@ -23,21 +23,21 @@ const Stock = ({ stock }, updateCalculatorState) => {
             flex: "1",
           }}
         >
-          {stock.value.toFixed(2)}
+          {props.stock.value.toFixed(2)}
         </div>
         <div
           style={{
             flex: "1",
           }}
         >
-          {stock.dividend.toFixed(2)}
+          {props.stock.dividend.toFixed(2)}
         </div>
         <div
           style={{
             flex: "1",
           }}
         >
-          {(stock.value * (stock.dividend * 0.01)).toFixed(2)}
+          {(props.stock.value * (props.stock.dividend * 0.01)).toFixed(2)}
         </div>
         <div
           style={{
@@ -46,14 +46,13 @@ const Stock = ({ stock }, updateCalculatorState) => {
         >
           <input
             type="radio"
-            id={stock.name}
-            name={stock.value}
+            id={props.stock.name}
+            name={props.stock.value}
             readOnly
             checked={isChecked}
             onClick={(event) => {
               setIsChecked(!isChecked);
-              // updateCalculatorState();
-              console.log(stock);
+              props.changeLastStock(props.stock);
             }}
           />
         </div>

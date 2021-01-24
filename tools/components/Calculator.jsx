@@ -1,11 +1,11 @@
-import { useEffect, useState } from "react";
-import lodash, { clone } from "lodash";
+import { useCallback, useEffect, useState } from "react";
+import lodash, { clone, last } from "lodash";
 import Stock from "./Stock";
 
 const stocks = [
   {
     name: "voo",
-    value: 765.35,
+    value: 10765.35,
     dividend: 1.5,
     reinvestDividend: false,
   },
@@ -72,12 +72,12 @@ const computeAnnualTotal = (stocksArray) => {
 
   const tempStocksArray = _.cloneDeep(stocksArray);
 
-  // objects references are currently still shared
-  console.log("arrayReference: ", tempStocksArray === stocksArray);
-  console.log(
-    "compare stock obj references: ",
-    tempStocksArray[0] === stocksArray[0]
-  );
+  // compare if object references are shared
+  // console.log("arrayReference: ", tempStocksArray === stocksArray);
+  // console.log(
+  //   "compare stock obj references: ",
+  //   tempStocksArray[0] === stocksArray[0]
+  // );
 
   for (let i = 0; i < 4; i++) {
     tempStocksArray.map((stock) => {
@@ -104,6 +104,25 @@ const Calculator = (props) => {
   // state hook for total quarterly dividend yeild
   const [totalQuarterly, setTotalQuarterly] = useState(
     computeQuarterlyTotal(clonedStocksArray)
+  );
+
+  const [lastStock, setLastStock] = useState("Last Stock");
+
+  const updateLastStock = useCallback(
+    (n) => {
+      setLastStock(() => {
+        // this can probably be done more efficiently with just spread operator
+        // grab index of stock from reinvest toggle event
+        const index = clonedStocksArray.indexOf(n);
+        // grab reference of object from reinvest toggle event
+        const stockObjRef = clonedStocksArray[index];
+        // toggle reinvestDividend boolean to opposite of current value
+        stockObjRef.reinvestDividend = !stockObjRef.reinvestDividend;
+        // reset local stock array
+        setClonedStocksArray([...clonedStocksArray]);
+      });
+    },
+    [setClonedStocksArray]
   );
 
   // goal is to fire re-compute functions for totals when the local array copy changes
@@ -177,7 +196,7 @@ const Calculator = (props) => {
         <Stock
           stock={stock}
           key={stock.name}
-          // updateCalculatorState={setClonedStocksArray}
+          changeLastStock={updateLastStock}
         ></Stock>
       ))}
     </div>
