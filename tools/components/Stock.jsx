@@ -26,7 +26,7 @@ const Stock = (props) => {
 
         <div
           style={{
-            flex: "1",
+            flex: "2",
           }}
         >
           <p>{props.stock.value.toFixed(2)}</p>

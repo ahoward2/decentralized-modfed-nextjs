@@ -1,13 +1,13 @@
 const stocks = [
   {
     name: "voo",
-    value: 10765.35,
+    value: 100765.35,
     dividend: 1.5,
     reinvestDividend: false,
   },
   {
     name: "vti",
-    value: 35230.02,
+    value: 235230.02,
     dividend: 1.38,
     reinvestDividend: false,
   },
@@ -19,25 +19,25 @@ const stocks = [
   },
   {
     name: "aapl",
-    value: 2601.79,
+    value: 522601.79,
     dividend: 0.61,
     reinvestDividend: false,
   },
   {
     name: "ba",
-    value: 339.73,
+    value: 233339.73,
     dividend: 1.98,
     reinvestDividend: false,
   },
   {
     name: "wmt",
-    value: 3149.31,
+    value: 313149.31,
     dividend: 1.49,
     reinvestDividend: false,
   },
   {
     name: "msft",
-    value: 11140.01,
+    value: 411140.01,
     dividend: 0.93,
     reinvestDividend: false,
   },

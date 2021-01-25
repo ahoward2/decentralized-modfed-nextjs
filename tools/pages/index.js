@@ -11,6 +11,12 @@ const Home = () => (
     </Head>
 
     <main>
+      <p>
+        Home App Running On{" "}
+        <a href="http://localhost:3000/">
+          {"👉"}Port //:3000{"👈"}
+        </a>
+      </p>
       <Header title={"Dividend Calculator"} />
       <Calculator />
     </main>

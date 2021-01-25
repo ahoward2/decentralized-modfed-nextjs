@@ -10,11 +10,13 @@ const Home = () => (
     </Head>
 
     <main>
-      <Header title={"Tools Monolith"} />
       <p>
-        Dividend Calculator Running On{" "}
-        <a href="http://localhost:3001/">Port //:3001</a>
+        Tools App running on{" "}
+        <a href="http://localhost:3001/">
+          {"👉"}Port //:3001{"👈"}
+        </a>
       </p>
+      <Header title={"Tools Monolith"} />
     </main>
 
     <footer>

@@ -21,7 +21,7 @@ const computeQuarterlyTotal = (stocksArray) => {
 // compute: sum(quarterly dividend yield) accounting for reinvestment if toggled
 // output: total expected annual dividend yeild
 
-const computeAnnualTotal = (stocksArray) => {
+const computeAnnualTotal = (stocksArray, years) => {
   let total = 0;
 
   const tempStocksArray = _.cloneDeep(stocksArray);
@@ -33,10 +33,11 @@ const computeAnnualTotal = (stocksArray) => {
   //   tempStocksArray[0] === stocksArray[0]
   // );
 
-  for (let i = 0; i < 4; i++) {
+  for (let i = 0; i < years * 4; i++) {
     tempStocksArray.map((stock) => {
       if (stock.reinvestDividend) {
         total = total + stock.value * (stock.dividend * 0.01);
+        // increase value of stock from reinvestment
         stock.value = stock.value + stock.value * (stock.dividend * 0.01);
       } else {
         total = total + stock.value * (stock.dividend * 0.01);
@@ -52,9 +53,21 @@ const Calculator = (props) => {
   const [clonedStocksArray, setClonedStocksArray] = useState(
     _.cloneDeep(stocks)
   );
+  // state hook for total annual dividend yield over 30 years
+  const [totalThirtyYears, setTotalThirtyYears] = useState(
+    computeAnnualTotal(clonedStocksArray, 30)
+  );
+  // state hook for total annual dividend yield over 10 years
+  const [totalTenYears, setTotalTenYears] = useState(
+    computeAnnualTotal(clonedStocksArray, 10)
+  );
+  // state hook for total annual dividend yield over 5 years
+  const [totalFiveYears, setTotalFiveYears] = useState(
+    computeAnnualTotal(clonedStocksArray, 5)
+  );
   // state hook for total annual dividend yeild
   const [totalAnnual, setTotalAnnual] = useState(
-    computeAnnualTotal(clonedStocksArray)
+    computeAnnualTotal(clonedStocksArray, 1)
   );
   // state hook for total quarterly dividend yeild
   const [totalQuarterly, setTotalQuarterly] = useState(
@@ -82,7 +95,10 @@ const Calculator = (props) => {
   // fire re-compute functions for annual return total when the local array copy changes
   useEffect(() => {
     console.log("running useEffect()");
-    setTotalAnnual(computeAnnualTotal(clonedStocksArray));
+    setTotalAnnual(computeAnnualTotal(clonedStocksArray, 1));
+    setTotalFiveYears(computeAnnualTotal(clonedStocksArray, 5));
+    setTotalTenYears(computeAnnualTotal(clonedStocksArray, 10));
+    setTotalThirtyYears(computeAnnualTotal(clonedStocksArray, 30));
   }, [clonedStocksArray]);
 
   return (
@@ -95,11 +111,47 @@ const Calculator = (props) => {
       }}
     >
       <div
-        style={{ display: "flex", textAlign: "center", paddingBottom: "1em" }}
+        style={{
+          display: "grid",
+          gridTemplateColumns: "auto auto",
+          gridTemplateRows: "auto auto",
+          alignContent: "right",
+          rowGap: "1px",
+          paddingBottom: "1em",
+        }}
       >
-        <h2 style={{ flex: 1 }}>{totalAnnual.toFixed(2)}</h2>
-        <h2 style={{ flex: 1 }}>{totalQuarterly.toFixed(2)}</h2>
+        <div style={{}}>
+          <h2 style={{}}>3 months</h2>
+        </div>
+        <div style={{ textAlign: "right" }}>
+          <h2>${totalQuarterly.toFixed(2)}</h2>
+        </div>
+        <div style={{}}>
+          <h2 style={{}}>1 year</h2>
+        </div>
+        <div style={{ textAlign: "right" }}>
+          <h2 style={{}}> ${totalAnnual.toFixed(2)}</h2>
+        </div>
+        <div style={{}}>
+          <h2 style={{}}>5 years</h2>
+        </div>
+        <div style={{ textAlign: "right" }}>
+          <h2>${totalFiveYears.toFixed(2)}</h2>
+        </div>
+        <div style={{}}>
+          <h2 style={{}}>10 years</h2>
+        </div>
+        <div style={{ textAlign: "right" }}>
+          <h2>${totalTenYears.toFixed(2)}</h2>
+        </div>
+        <div style={{}}>
+          <h2 style={{}}>30 years</h2>
+        </div>
+        <div style={{ textAlign: "right" }}>
+          <h2>${totalThirtyYears.toFixed(2)}</h2>
+        </div>
       </div>
+
       <div
         style={{
           display: "flex",
