@@ -60,6 +60,7 @@ const Calculator = (props) => {
   const [totalQuarterly, setTotalQuarterly] = useState(
     computeQuarterlyTotal(clonedStocksArray)
   );
+  const [lastStock, setLastStock] = useState(null);
   // callback for toggling reinvesting dividends option for local stocks array
   const updateLastStock = useCallback(
     (n) => {
@@ -93,13 +94,16 @@ const Calculator = (props) => {
         padding: "1em",
       }}
     >
-      <div style={{ textAlign: "center", paddingBottom: "1em" }}>
-        <div>Annual: {totalAnnual.toFixed(2)}</div>
-        <div>Quarterly: {totalQuarterly.toFixed(2)}</div>
+      <div
+        style={{ display: "flex", textAlign: "center", paddingBottom: "1em" }}
+      >
+        <h2 style={{ flex: 1 }}>{totalAnnual.toFixed(2)}</h2>
+        <h2 style={{ flex: 1 }}>{totalQuarterly.toFixed(2)}</h2>
       </div>
       <div
         style={{
           display: "flex",
+          justifyContent: "space-between",
         }}
       >
         <div
@@ -107,7 +111,7 @@ const Calculator = (props) => {
             flex: "1",
           }}
         >
-          {"N"}
+          <p>{"Name"}</p>
         </div>
 
         <div
@@ -115,21 +119,21 @@ const Calculator = (props) => {
             flex: "1",
           }}
         >
-          {"V"}
+          <p>{"M. Value"}</p>
         </div>
         <div
           style={{
             flex: "1",
           }}
         >
-          {"Y"}
+          <p>{"D. Yield"}</p>
         </div>
         <div
           style={{
             flex: "1",
           }}
         >
-          {"Q/R"}
+          <p>{"Quarterly Dividend Returns"}</p>
         </div>
         <div
           style={{
@@ -141,7 +145,7 @@ const Calculator = (props) => {
               flex: "1",
             }}
           >
-            {"R/I"}
+            <p>{"Reinvest Dividends"}</p>
           </div>
         </div>
       </div>
