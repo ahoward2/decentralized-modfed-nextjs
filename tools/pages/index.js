@@ -11,12 +11,6 @@ const Home = () => (
     </Head>
 
     <main>
-      <p>
-        Home App Running On{" "}
-        <a href="http://localhost:3000/">
-          {"👉"}Port //:3000{"👈"}
-        </a>
-      </p>
       <Header title={"Dividend Calculator"} />
       <Calculator />
     </main>
@@ -42,7 +36,7 @@ const Home = () => (
       }
 
       main {
-        padding: 5rem 0;
+        padding: 0 0 5rem 0;
         flex: 1;
         display: flex;
         flex-direction: column;

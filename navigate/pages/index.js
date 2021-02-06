@@ -1,16 +1,29 @@
 import Head from "next/head";
+import NavigationBar from "./../components/NavigationBar";
+import List from "./../components/List";
+const Header = (await import("home/Header")).default;
 
-import Header from "../components/Header.jsx";
+const listItems = [
+  {
+    title: "Home App",
+    url: "http://localhost:3000/",
+  },
+  {
+    title: "Tools App",
+    url: "http://localhost:3001/",
+  },
+];
 
 const Home = () => (
   <div className="container">
     <Head>
-      <title>Next JS Module Federation</title>
+      <title>Navigate</title>
       <link rel="icon" href="/favicon.ico" />
     </Head>
 
     <main>
-      <Header title={"Tools Monolith"} />
+      <Header title={"Navigate"} />
+      <List listItems={listItems}></List>
     </main>
 
     <footer>

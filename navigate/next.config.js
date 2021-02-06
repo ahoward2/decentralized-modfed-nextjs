@@ -8,8 +8,8 @@ module.exports = {
   webpack: (config, options) => {
     const { buildId, dev, isServer, defaultLoaders, webpack } = options;
     const mfConf = {
-      name: "tools",
-      library: { type: config.output.libraryTarget, name: "tools" },
+      name: "navigate",
+      library: { type: config.output.libraryTarget, name: "navigate" },
       filename: "static/runtime/remoteEntry.js",
       remotes: {
         // For SSR, resolve to disk path (or you can use code streaming if you have access)
@@ -20,7 +20,7 @@ module.exports = {
             )
           : "home", // for client, treat it as a global
       },
-      exposes: {},
+      exposes: { "./List": "./components/List" },
       shared: [],
     };
 
@@ -28,7 +28,7 @@ module.exports = {
     withModuleFederation(config, options, mfConf);
 
     if (!isServer) {
-      config.output.publicPath = "http://localhost:3001/_next/";
+      config.output.publicPath = "http://localhost:3002/_next/";
     }
 
     config.plugins.push(new MergeRuntime());
