@@ -5,11 +5,12 @@ const {
 const path = require("path");
 
 module.exports = {
+  basePath: "/accounts",
   webpack: (config, options) => {
     const { buildId, dev, isServer, defaultLoaders, webpack } = options;
     const mfConf = {
-      name: "navigate",
-      library: { type: config.output.libraryTarget, name: "navigate" },
+      name: "accounts",
+      library: { type: config.output.libraryTarget, name: "accounts" },
       filename: "static/runtime/remoteEntry.js",
       remotes: {
         // For SSR, resolve to disk path (or you can use code streaming if you have access)
@@ -20,7 +21,6 @@ module.exports = {
             )
           : "home", // for client, treat it as a global
       },
-      exposes: { "./List": "./components/List" },
       shared: [],
     };
 

@@ -14,6 +14,7 @@ module.exports = {
       remotes: {},
       exposes: {
         "./Header": "./components/Header",
+        "./Tabs": "./components/Tabs",
       },
       shared: [],
     };

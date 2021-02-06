@@ -110,6 +110,7 @@ const Calculator = (props) => {
         padding: "1em",
       }}
     >
+      <h2>Expected Returns</h2>
       <div
         style={{
           display: "grid",
@@ -121,86 +122,37 @@ const Calculator = (props) => {
         }}
       >
         <div style={{}}>
-          <h2 style={{}}>3 months</h2>
+          <p style={{}}>3 months</p>
         </div>
         <div style={{ textAlign: "right" }}>
-          <h2>${totalQuarterly.toFixed(2)}</h2>
+          <p>${totalQuarterly.toFixed(2)}</p>
         </div>
         <div style={{}}>
-          <h2 style={{}}>1 year</h2>
+          <p style={{}}>1 year</p>
         </div>
         <div style={{ textAlign: "right" }}>
-          <h2 style={{}}> ${totalAnnual.toFixed(2)}</h2>
+          <p style={{}}> ${totalAnnual.toFixed(2)}</p>
         </div>
         <div style={{}}>
-          <h2 style={{}}>5 years</h2>
+          <p style={{}}>5 years</p>
         </div>
         <div style={{ textAlign: "right" }}>
-          <h2>${totalFiveYears.toFixed(2)}</h2>
+          <p>${totalFiveYears.toFixed(2)}</p>
         </div>
         <div style={{}}>
-          <h2 style={{}}>10 years</h2>
+          <p style={{}}>10 years</p>
         </div>
         <div style={{ textAlign: "right" }}>
-          <h2>${totalTenYears.toFixed(2)}</h2>
+          <p>${totalTenYears.toFixed(2)}</p>
         </div>
         <div style={{}}>
-          <h2 style={{}}>30 years</h2>
+          <p style={{}}>30 years</p>
         </div>
         <div style={{ textAlign: "right" }}>
-          <h2>${totalThirtyYears.toFixed(2)}</h2>
+          <p>${totalThirtyYears.toFixed(2)}</p>
         </div>
       </div>
-
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "space-between",
-        }}
-      >
-        <div
-          style={{
-            flex: "1",
-          }}
-        >
-          <p>{"Name"}</p>
-        </div>
-
-        <div
-          style={{
-            flex: "1",
-          }}
-        >
-          <p>{"M. Value"}</p>
-        </div>
-        <div
-          style={{
-            flex: "1",
-          }}
-        >
-          <p>{"D. Yield"}</p>
-        </div>
-        <div
-          style={{
-            flex: "1",
-          }}
-        >
-          <p>{"Quarterly Dividend Returns"}</p>
-        </div>
-        <div
-          style={{
-            flex: "1",
-          }}
-        >
-          <div
-            style={{
-              flex: "1",
-            }}
-          >
-            <p>{"Reinvest Dividends"}</p>
-          </div>
-        </div>
-      </div>
+      <h2>Stocks</h2>
       {clonedStocksArray.map((stock) => (
         <Stock
           stock={stock}

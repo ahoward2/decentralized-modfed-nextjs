@@ -1,5 +1,5 @@
 import Head from "next/head";
-
+import Tabs from "../components/Tabs.jsx";
 import Header from "../components/Header.jsx";
 
 const Home = () => (
@@ -11,6 +11,38 @@ const Home = () => (
 
     <main>
       <Header title={"Tools Monolith"} />
+      <div style={{ padding: "1em" }}>
+        <h2>What is this app?</h2>
+        <p>
+          This application is an example of how to leverage module federation.
+          There are many benefits to using module federation, the main one being
+          that you can expose and consume modules between applications at
+          runtime. The main use case shown in this application is seperate
+          builds per page. The 3 apps in this Monolith application are:
+        </p>
+        <ul>
+          <li>
+            <strong>Home</strong>
+          </li>
+          <li>
+            <strong>Tools</strong>
+          </li>
+          <li>
+            <strong>Accounts</strong>
+          </li>
+        </ul>
+        <p>
+          Another incredibly interesting tools that is in it's early stages of
+          development is the module federation dashboard.
+        </p>
+        <h2>TODOs</h2>
+        <ul>
+          <li>
+            Adding navigation menu to header component for use in all apps/pages
+          </li>
+          <li>Add footer component for use in all apps/pages</li>
+        </ul>
+      </div>
     </main>
 
     <footer>
@@ -22,11 +54,11 @@ const Home = () => (
         Powered by <img src="/zeit.svg" alt="ZEIT Logo" />
       </a>
     </footer>
+    <Tabs></Tabs>
 
     <style jsx>{`
       .container {
         min-height: 100vh;
-        padding: 0 0.5rem;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -34,6 +66,7 @@ const Home = () => (
       }
 
       main {
+        width: 100%;
         padding: 0 0 5rem 0;
         flex: 1;
         display: flex;
@@ -45,6 +78,7 @@ const Home = () => (
       footer {
         width: 100%;
         height: 100px;
+        margin-bottom: 3rem;
         border-top: 1px solid #eaeaea;
         display: flex;
         justify-content: center;

@@ -10,12 +10,10 @@ const Header = (props) => (
       display: "flex",
     }}
   >
-    <div style={{ flex: 1 }}>
+    <div style={{ flex: 3 }}>
       <h1>{props.title}</h1>
     </div>
-    <div style={{ flex: 1 }}>
-      <Link href="http://localhost:3002/">Navigate</Link>
-    </div>
+    <div style={{ flex: 1 }}></div>
   </div>
 );
 

@@ -5,6 +5,7 @@ const {
 const path = require("path");
 
 module.exports = {
+  basePath: "/tools",
   webpack: (config, options) => {
     const { buildId, dev, isServer, defaultLoaders, webpack } = options;
     const mfConf = {

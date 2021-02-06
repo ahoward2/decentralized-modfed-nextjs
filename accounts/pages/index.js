@@ -1,7 +1,6 @@
 import Head from "next/head";
-import NavigationBar from "./../components/NavigationBar";
-import List from "./../components/List";
 const Header = (await import("home/Header")).default;
+const Tabs = (await import("home/Tabs")).default;
 
 const listItems = [
   {
@@ -10,20 +9,27 @@ const listItems = [
   },
   {
     title: "Tools App",
-    url: "http://localhost:3001/",
+    url: "http://localhost:3001/tools",
   },
 ];
 
 const Home = () => (
   <div className="container">
     <Head>
-      <title>Navigate</title>
+      <title>Accounts</title>
       <link rel="icon" href="/favicon.ico" />
     </Head>
 
     <main>
-      <Header title={"Navigate"} />
-      <List listItems={listItems}></List>
+      <Header title={"Accounts"} />
+      <div>
+        <h2>TODOs</h2>
+        <ul>
+          <li>Authentication</li>
+          <li>Display Personal Stock Holdings In A List</li>
+          <li>Display Links To Tools</li>
+        </ul>
+      </div>
     </main>
 
     <footer>
@@ -32,14 +38,14 @@ const Home = () => (
         target="_blank"
         rel="noopener noreferrer"
       >
-        Powered by <img src="/zeit.svg" alt="ZEIT Logo" />
+        Powered by <img src="accounts/zeit.svg" alt="ZEIT Logo" />
       </a>
     </footer>
+    <Tabs></Tabs>
 
     <style jsx>{`
       .container {
         min-height: 100vh;
-        padding: 0 0.5rem;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -47,6 +53,7 @@ const Home = () => (
       }
 
       main {
+        width: 100%;
         padding: 0 0 5rem 0;
         flex: 1;
         display: flex;
@@ -58,6 +65,7 @@ const Home = () => (
       footer {
         width: 100%;
         height: 100px;
+        margin-bottom: 3rem;
         border-top: 1px solid #eaeaea;
         display: flex;
         justify-content: center;
