@@ -1,4 +1,4 @@
-# random-tools-mf 🧬
+# decentralized-modfed-nextjs 🧬
 
 Monolith of random tools - module federation -> orig clone from [jherr/wp5-nextjs-10](https://github.com/jherr/wp5-nextjs-10)
 
